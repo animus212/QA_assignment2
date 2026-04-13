@@ -23,7 +23,7 @@ jobs:
           cache: maven
 
       - name: Run Tests
-        run: mvn test -Dsurefire.suiteXmlFiles=group-test.xml,parallel-test.xml,firstExercise.xml
+        run: mvn test -Dsurefire.suiteXmlFiles=src/test/group-test.xml,src/test/parallel-test.xml,src/test/firstExercise.xml
 
       - name: Upload Report
         if: always()
