@@ -1,0 +1,33 @@
+name: Selenium Test Suite
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Java 24
+        uses: actions/setup-java@v4
+        with:
+          java-version: '24'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Run Tests
+        # This command tells Maven to run the tests using your TestNG XML file
+        run: mvn test -Dsurefire.suiteXmlFiles=testng.xml
+
+      - name: Upload Report
+        if: always() # Runs even if tests fail
+        uses: actions/artifact-upload@v4
+        with:
+          name: test-reports
+          path: target/surefire-reports/

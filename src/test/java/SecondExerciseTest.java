@@ -19,14 +19,17 @@ public class SecondExerciseTest {
 
         if(browser.equalsIgnoreCase("firefox")) {
             FirefoxOptions fireFoxOptions = new FirefoxOptions();
-            fireFoxOptions.addArguments("--remote-allow-origins=*");
+            fireFoxOptions.addArguments("-headless");
             WebDriverManager.firefoxdriver().setup();
-            driver = new FirefoxDriver();
+            driver = new FirefoxDriver(fireFoxOptions);
         }else if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.addArguments("--remote-allow-origins=*");
+            chromeOptions.addArguments("--headless=new");
+            chromeOptions.addArguments("--disable-gpu");
+            chromeOptions.addArguments("--window-size=1920,1080");
             WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(chromeOptions);
         }
 
 
