@@ -5,6 +5,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build-and-test:
@@ -22,12 +23,11 @@ jobs:
           cache: maven
 
       - name: Run Tests
-        # This command tells Maven to run the tests using your TestNG XML file
-        run: mvn test -Dsurefire.suiteXmlFiles=testng.xml
+        run: mvn test -Dsurefire.suiteXmlFiles=group-test.xml,parallel-test.xml,firstExercise.xml
 
       - name: Upload Report
-        if: always() # Runs even if tests fail
-        uses: actions/artifact-upload@v4
+        if: always()
+        uses: actions/upload-artifact@v4  # Fixed the name here
         with:
           name: test-reports
           path: target/surefire-reports/

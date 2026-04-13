@@ -1,0 +1,8 @@
+<suite name="Suite" parallel="none">
+    <test name="FirstTest">
+        <classes>
+            <class name="FirstExerciseTest" />
+        </classes>
+    </test>
+
+</suite>
