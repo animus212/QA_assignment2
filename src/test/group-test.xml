@@ -1,0 +1,16 @@
+<suite name ="Suite">
+    <test name="FirstTest">
+        <groups>
+            <define name="All">
+                <include name="Regression"/>
+                <include name="Smoke"/>
+            </define>
+            <run>
+                <include name="All"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="ThirdExerciseTest"/>
+        </classes>
+    </test>
+</suite>
