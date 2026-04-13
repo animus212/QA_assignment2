@@ -16,7 +16,7 @@ public class SecondExerciseTest {
 
     @Parameters("browser") @BeforeClass
     public void beforeTest(String browser) {
-
+//aaa
         if(browser.equalsIgnoreCase("firefox")) {
             FirefoxOptions fireFoxOptions = new FirefoxOptions();
             fireFoxOptions.addArguments("-headless");
